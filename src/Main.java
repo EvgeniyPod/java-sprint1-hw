@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * Класс вывода консольного меню и ввода пользователем переменных.
+ * @author Евгений Подолский
+ * @version 1.2
+ */
 class  Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -19,8 +24,8 @@ class  Main {
 
             } else if (command == 3) {
                 System.out.println("Выполняется команда 3:");
-
                 stepTracker.printStatistic();
+                //System.out.println("Количество шагов за месяц: " + stepTracker.stepsPerMonth);
 
             } else if (command == 0) {
                 System.out.println("Досвидания!");
@@ -33,6 +38,7 @@ class  Main {
 
     }
 
+    /** Метод вызова консольного меню */
     public static void printMenu() {
         System.out.println("Что вы хотите сделать? ");
         System.out.println("1 - Ввести количество шагов за определённый день.");

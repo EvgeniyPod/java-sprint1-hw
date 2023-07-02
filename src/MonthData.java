@@ -1,6 +1,10 @@
-// данные конкретного месяца и логика по подсчёту статистики
+/**
+ * Класс хранения данных конкретного месяца и логика по подсчёту статистики.
+ */
 class MonthData {
     int[] days = new int[30];
+
+    /** Метод вывода переменных одного месяца по дням */
     void printDaysAndStepsFromMonth() {
 
         for (int i = 0; i < days.length; i++) {
@@ -8,6 +12,7 @@ class MonthData {
         }
     }
 
+    /** Метод подсчёта общего числа шагов за один месяц */
     public int sumStepsFromMonth() {
         int sumSteps = 0;
         for (int i = 0; i < days.length; i++) {
@@ -16,6 +21,7 @@ class MonthData {
         return sumSteps;
     }
 
+    /** Метод определения наибольшего количества шагов за один день в месяце */
     int maxSteps() {
         int maxSteps = 0;
         for (int i = 0; i < days.length; i++) {
@@ -23,10 +29,10 @@ class MonthData {
                 maxSteps = days[i];
             }
         }
-        System.out.println("Максимальное количество шагов за день: " + maxSteps);
         return maxSteps;
     }
 
+    /** Метод определения лучшей серии по выполнению цели подряд идущих дней */
     int bestSeries(int goalByStepsPerDay) {
         int maxSeriesDays = 0;
         int currentSeries = 0;
@@ -41,13 +47,12 @@ class MonthData {
                 maxSeriesDays = currentSeries;
             }
         }
-        System.out.println("Лучшая серия: " + maxSeriesDays);
         return maxSeriesDays;
     }
 
+    /** Метод определения среднего количества шагов пройденных за месяц */
     int midleStepsMonth() {
         int midleSteps = sumStepsFromMonth() / 30;
-        System.out.println("Среднее количество шагов за месяц: " + midleSteps);
         return midleSteps;
     }
 

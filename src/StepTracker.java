@@ -1,8 +1,11 @@
 
 import java.util.Scanner;
-class StepTracker {
 
-    MonthData monthData = new MonthData();
+/**
+ * Класс ввода пользователем переменных (шагов за конкретный день, новая цель шагов), вывод статистики
+ */
+class StepTracker {
+    
     MonthData[] monthToData = new MonthData[12];
     Converter converter = new Converter();
     Scanner scanner;
@@ -15,6 +18,7 @@ class StepTracker {
         }
     }
 
+    /** Ввод пользователем шагов за конкретный день */
     void addNewNumberStepsPerDay() {
 
         System.out.println("Введите номер месяца:");
@@ -45,6 +49,7 @@ class StepTracker {
 
     }
 
+    /** Ввод пользователем новой цели по количеству шагов за день */
     void changeStepGlobal() {
         System.out.println("Введите новую цель по количеству шагов в день:");
         while (true) {
@@ -60,6 +65,7 @@ class StepTracker {
 
     }
 
+    /** Вывод статистики за конкретный месяц */
     void printStatistic() {
         System.out.println("Введите номер месяца:");
         int month = scanner.nextInt();
@@ -67,14 +73,23 @@ class StepTracker {
             System.out.println("В году 12 месяцев, заданное вами число не соответсвуют.");
             return;
         }
+
         MonthData monthData = monthToData[month-1];
+        int stepsPerMonth = monthData.sumStepsFromMonth();
+        int maxSteps = monthData.maxSteps();
+        int midleSteps = monthData.midleStepsMonth();
+        int distans = converter.convertToKm(monthData.sumStepsFromMonth());
+        int kilocalories = converter.convertStepsToKilocalories(monthData.sumStepsFromMonth());
+        int maxSeriesDays = monthData.bestSeries(goalByStepsPerDay);
+
         monthData.printDaysAndStepsFromMonth();
-        System.out.println("Количество шагов за месяц: " + monthData.sumStepsFromMonth());
-        monthData.maxSteps();
-        monthData.midleStepsMonth();
-        converter.convertToKm(monthData.sumStepsFromMonth());
-        converter.convertStepsToKilocalories(monthData.sumStepsFromMonth());
-        monthData.bestSeries(goalByStepsPerDay);
+        System.out.println("Количество шагов за месяц: " + stepsPerMonth);
+        System.out.println("Максимальное количество шагов за день: " + maxSteps);
+        System.out.println("Среднее количество шагов за месяц: " + midleSteps);
+        System.out.println("Пройдено " + distans + " км.");
+        System.out.println("Сожжено " + kilocalories + " килокалорий");
+        System.out.println("Лучшая серия: " + maxSeriesDays);
+
 
     }
 

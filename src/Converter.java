@@ -1,16 +1,15 @@
-import java.util.Scanner;
-
 public class Converter {
+
+    /** Метод определения пройденого растояния за месяц в КМ */
     int convertToKm(int sumSteps) {
 
         int distans = sumSteps * 75 / 100000;
-        System.out.println("Пройдено " + distans + " км.");
         return distans;
     }
 
+    /** Метод определения сожженого количества калорий за месяц */
     int convertStepsToKilocalories(int sumSteps) {
         int kilocalories =  sumSteps * 50 / 1000;
-        System.out.println("Сожжено " + kilocalories + " килокалорий");
         return kilocalories;
     }
 
